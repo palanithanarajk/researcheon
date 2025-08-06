@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Hero from './Hero';
 import Services from './Services';
+import SubscriptionForm from './SubscriptionForm';
 import About from './About';
 import Trends from './Trends';
 import ContactForm from './ContactForm';
@@ -31,6 +32,7 @@ const HomePage: React.FC = () => {
         <>
             <Hero onNavigate={handleNavigateToServices} />
             <Services />
+            <SubscriptionForm />
             <About />
             <Trends />
             <ContactForm />

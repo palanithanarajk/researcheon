@@ -114,5 +114,14 @@ export const TRENDS_DATA: Trend[] = [
         snippet: 'In an era of big data, robust data management is more critical than ever. Funders and journals are now implementing stricter requirements for data availability and reproducibility.',
         contentPath: '/content/blog/research-data-management.md',
         publishDate: '2023-11-10T14:00:00Z'
+    },
+
+    {
+        id: 5,
+        title: 'Reimagining AI in Research',
+        image: 'https://picsum.photos/seed/data/600/400',
+        snippet: 'In an era of big data, robust data management is more critical than ever. Funders and journals are now implementing stricter requirements for data availability and reproducibility.',
+        contentPath: '/content/blog/ai-role.md',
+        publishDate: '2025-11-10T14:00:00Z'
     }
-];
+].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
