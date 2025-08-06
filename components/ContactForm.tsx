@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from './ui/Button';
 import { ContactFormData, FormStatus } from '../types';
+import { handleFormSubmit, FormData } from '../src/utils/formHandlers';
 
 const ContactForm: React.FC = () => {
     const [formData, setFormData] = useState<ContactFormData>({
@@ -52,17 +53,17 @@ const ContactForm: React.FC = () => {
         setError('');
 
         try {
-            // API call to save to CSV
-            const apiUrl = process.env.NODE_ENV === 'production' ? 'http://localhost:3001/api/contact' : '/api/contact';
-            await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
+            // Submit to Google Sheets
+            const googleFormData: FormData = {
+                name: formData.name,
+                email: formData.email,
+                message: `Subject: ${formData.subject}\n\n${formData.message}`,
+                formType: 'contact'
+            };
 
-            console.log('Form data submitted:', formData);
+            await handleFormSubmit(googleFormData);
+
+            console.log('Form data submitted to Google Sheets:', formData);
             setStatus(FormStatus.Success);
             setFormData({ name: '', email: '', subject: '', message: '' });
             

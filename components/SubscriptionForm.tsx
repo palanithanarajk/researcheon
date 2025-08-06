@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { handleFormSubmit, FormData } from '../src/utils/formHandlers';
 
 interface SubscriptionFormProps {
     onSubscribe?: (email: string, name: string) => void;
@@ -35,15 +36,14 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({ onSubscribe }) => {
         setError('');
         
         try {
-            // API call to save to CSV
-            const apiUrl = process.env.NODE_ENV === 'production' ? 'http://localhost:3001/api/subscribe' : '/api/subscribe';
-            await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email }),
-            });
+            // Submit to Google Sheets
+            const googleFormData: FormData = {
+                name,
+                email,
+                formType: 'subscribe'
+            };
+
+            await handleFormSubmit(googleFormData);
             
             setStatus('success');
             setName('');
