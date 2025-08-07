@@ -89,7 +89,7 @@ export const TRENDS_DATA: Trend[] = [
     image: 'https://picsum.photos/seed/openaccess/600/400',
     snippet: 'Open Access publishing has reached a tipping point, with Gold OA now accounting for 38% of all scholarly articles globally. Market revenues are projected to grow from $2.1B in 2024 to $3.2B by 2028, driven by institutional mandates and new funding models.',
     contentPath: '/content/blog/blog-post-1-oa.md',
-    publishDate: '2025-06-23T10:00:00Z'
+    publishDate: '2025-01-23T10:00:00Z'
 },
 
 {
@@ -98,7 +98,7 @@ export const TRENDS_DATA: Trend[] = [
     image: 'https://picsum.photos/seed/aipublishing/600/400',
     snippet: 'AI is transforming scholarly publishing with a market value growing from $2.8B in 2023 to a projected $41.2B by 2033. While AI enhances manuscript screening, peer review, and fraud detection, it raises critical ethical questions about authorship and content authenticity.',
     contentPath: '/content/blog/blog-post-2-ai.md',
-    publishDate: '2025-07-08T10:00:00Z'
+    publishDate: '2025-02-08T10:00:00Z'
 },
 
 {
@@ -107,7 +107,7 @@ export const TRENDS_DATA: Trend[] = [
     image: 'https://picsum.photos/seed/predatory/600/400',
     snippet: 'Predatory publishing has exploded from 20 journals in 2010 to over 18,000 in 2024, with 14.6% of research retractions now linked to predatory practices. This $50+ million fraudulent industry threatens research integrity as institutions develop sophisticated detection tools.',
     contentPath: '/content/blog/blog-post-3-predatory.md',
-    publishDate: '2025-07-18T10:00:00Z'
+    publishDate: '2025-03-18T10:00:00Z'
 },
 
 {
@@ -116,7 +116,7 @@ export const TRENDS_DATA: Trend[] = [
     image: 'https://picsum.photos/seed/peerreview/600/400',
     snippet: 'With 93% of experts believing peer review needs major improvements, the scholarly community is embracing transformative innovations including open peer review, AI-assisted evaluation, and post-publication review. Over 60 preprint servers worldwide are accelerating research dissemination.',
     contentPath: '/content/blog/blog-post-4-peer-review.md',
-    publishDate: '2025-07-28T10:00:00Z'
+    publishDate: '2025-04-28T10:00:00Z'
 },
 
 {
@@ -125,7 +125,15 @@ export const TRENDS_DATA: Trend[] = [
     image: 'https://picsum.photos/seed/digital/600/400',
     snippet: 'Digital transformation is revolutionizing scholarly communication through persistent identifiers like ORCID (used by over 2 million researchers), blockchain technology for research integrity, and alternative metrics that complement traditional citations in creating more transparent research ecosystems.',
     contentPath: '/content/blog/blog-post-5-digital.md',
-    publishDate: '2025-08-04T10:00:00Z'
+    publishDate: '2025-05-04T10:00:00Z'
+},
+{
+    id: 6,
+    title: 'Recent Trends in Computer Vision',
+    image: 'https://picsum.photos/seed/vision/600/400',
+    snippet: 'Computer vision is advancing rapidly in 2025 with trends like event-based imaging for real-time defect detection and AI-driven tools for multi-modal analysis, impacting industries from manufacturing to healthcare.',
+    contentPath: '/content/blog/blog-post-6-cv.md',
+    publishDate: '2025-06-04T10:00:00Z'
 }
 
 ].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
