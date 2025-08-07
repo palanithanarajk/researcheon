@@ -84,44 +84,48 @@ export const SERVICES_LIST: Service[] = [
 
 export const TRENDS_DATA: Trend[] = [
     {
-        id: 1,
-        title: 'The Rise of AI in Academic Research',
-        image: 'https://picsum.photos/seed/ai/600/400',
-        snippet: 'Artificial intelligence is no longer a futuristic concept but a practical tool transforming research methodologies. From data analysis to hypothesis generation, AI is accelerating discovery at an unprecedented rate.',
-        contentPath: '/content/blog/ai-in-academic-research.md',
-        publishDate: '2024-05-15T10:00:00Z'
-    },
-    {
-        id: 2,
-        title: 'Open Access and the Future of Publishing',
-        image: 'https://picsum.photos/seed/open/600/400',
-        snippet: 'The open access movement is gaining momentum, challenging traditional subscription-based publishing models. What does this mean for researchers, institutions, and the dissemination of knowledge?',
-        contentPath: '/content/blog/open-access-publishing.md',
-        publishDate: '2024-05-01T11:00:00Z'
-    },
-    {
-        id: 3,
-        title: 'Interdisciplinary Collaboration is Key',
-        image: 'https://picsum.photos/seed/collab/600/400',
-        snippet: 'Solving the world\'s most complex problems requires expertise from multiple fields. We explore the growing importance of interdisciplinary research and how to foster effective collaboration.',
-        contentPath: '/content/blog/interdisciplinary-collaboration.md',
-        publishDate: '2024-04-20T09:00:00Z'
-    },
-    {
-        id: 4,
-        title: 'The Importance of Research Data Management',
-        image: 'https://picsum.photos/seed/data/600/400',
-        snippet: 'In an era of big data, robust data management is more critical than ever. Funders and journals are now implementing stricter requirements for data availability and reproducibility.',
-        contentPath: '/content/blog/research-data-management.md',
-        publishDate: '2023-11-10T14:00:00Z'
-    },
+    id: 1,
+    title: 'The Open Access Revolution: How Gold OA is Transforming Scholarly Publishing in 2025',
+    image: 'https://picsum.photos/seed/openaccess/600/400',
+    snippet: 'Open Access publishing has reached a tipping point, with Gold OA now accounting for 38% of all scholarly articles globally. Market revenues are projected to grow from $2.1B in 2024 to $3.2B by 2028, driven by institutional mandates and new funding models.',
+    contentPath: '/content/blog/blog-post-1-oa.md',
+    publishDate: '2025-06-23T10:00:00Z'
+},
 
-    {
-        id: 5,
-        title: 'Reimagining AI in Research',
-        image: 'https://picsum.photos/seed/data/600/400',
-        snippet: 'In an era of big data, robust data management is more critical than ever. Funders and journals are now implementing stricter requirements for data availability and reproducibility.',
-        contentPath: '/content/blog/ai-role.md',
-        publishDate: '2025-11-10T14:00:00Z'
-    }
+{
+    id: 2,
+    title: 'Artificial Intelligence in Scholarly Publishing: Revolutionizing Research Integrity and Editorial Workflows',
+    image: 'https://picsum.photos/seed/aipublishing/600/400',
+    snippet: 'AI is transforming scholarly publishing with a market value growing from $2.8B in 2023 to a projected $41.2B by 2033. While AI enhances manuscript screening, peer review, and fraud detection, it raises critical ethical questions about authorship and content authenticity.',
+    contentPath: '/content/blog/blog-post-2-ai.md',
+    publishDate: '2025-07-08T10:00:00Z'
+},
+
+{
+    id: 3,
+    title: 'The Predatory Publishing Crisis: Combating Academic Fraud in the Digital Age',
+    image: 'https://picsum.photos/seed/predatory/600/400',
+    snippet: 'Predatory publishing has exploded from 20 journals in 2010 to over 18,000 in 2024, with 14.6% of research retractions now linked to predatory practices. This $50+ million fraudulent industry threatens research integrity as institutions develop sophisticated detection tools.',
+    contentPath: '/content/blog/blog-post-3-predatory.md',
+    publishDate: '2025-07-18T10:00:00Z'
+},
+
+{
+    id: 4,
+    title: 'Reimagining Peer Review: Innovation and Technology Reshaping Scholarly Evaluation',
+    image: 'https://picsum.photos/seed/peerreview/600/400',
+    snippet: 'With 93% of experts believing peer review needs major improvements, the scholarly community is embracing transformative innovations including open peer review, AI-assisted evaluation, and post-publication review. Over 60 preprint servers worldwide are accelerating research dissemination.',
+    contentPath: '/content/blog/blog-post-4-peer-review.md',
+    publishDate: '2025-07-28T10:00:00Z'
+},
+
+{
+    id: 5,
+    title: 'Digital Transformation in Scholarly Communication: From ORCID to Blockchain Revolution',
+    image: 'https://picsum.photos/seed/digital/600/400',
+    snippet: 'Digital transformation is revolutionizing scholarly communication through persistent identifiers like ORCID (used by over 2 million researchers), blockchain technology for research integrity, and alternative metrics that complement traditional citations in creating more transparent research ecosystems.',
+    contentPath: '/content/blog/blog-post-5-digital.md',
+    publishDate: '2025-08-04T10:00:00Z'
+}
+
 ].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());

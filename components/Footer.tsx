@@ -18,16 +18,21 @@ const Footer: React.FC = () => {
                             <h3 className="text-lg font-semibold">Featured Content</h3>
                         </div>
                         <ul className="space-y-2">
-                            {recentArticles.map(article => (
-                                <li key={article.id}>
-                                    <a 
-                                        href={`/?page=trend&id=${article.id}`}
-                                        className="text-gray-300 hover:text-white transition"
-                                    >
-                                        {article.title}
-                                    </a>
-                                </li>
-                            ))}
+                            {recentArticles.map(article => {
+                                const maxLength = 30; // max length of title to display
+                                const shortTitle = article.title.length > maxLength ? article.title.slice(0, maxLength) + '...' : article.title;
+                                return (
+                                    <li key={article.id}>
+                                        <a 
+                                            href={`/?page=trend&id=${article.id}`}
+                                            className="text-gray-300 hover:text-white transition"
+                                            title={article.title} // full title on hover
+                                        >
+                                            {shortTitle}
+                                        </a>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                     
@@ -56,10 +61,13 @@ const Footer: React.FC = () => {
                             For any support inquiries, please contact us:
                         </p>
                         <a 
-                            href="mailto:thanrajks@researcheon.com" 
-                            className="text-brand-secondary hover:text-white transition"
+                            href="mailto:ask@researcheon.com" 
+                            className="text-brand-secondary hover:text-white transition flex items-center space-x-1"
                         >
-                            thanrajks@researcheon.com
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span>ask@researcheon.com</span>
                         </a>
                     </div>
                     
