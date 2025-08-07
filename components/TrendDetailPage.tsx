@@ -25,6 +25,7 @@ const TrendDetailPage: React.FC<TrendDetailPageProps> = ({ trendId }) => {
         <article className="bg-white">
             <div className="container mx-auto px-6 py-12 md:py-20">
                 <div className="max-w-4xl mx-auto">
+                    <h1 className="text-3xl md:text-5xl font-bold text-brand-dark mb-4">{trend.title}</h1>
                     <p className="text-gray-500 mb-6">
                         Published on {new Date(trend.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </p>

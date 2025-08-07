@@ -6,7 +6,7 @@ The scholarly publishing ecosystem is experiencing its most significant transfor
 
 ## The Economic Engine of Change
 
-The financial dimensions of this transformation are equally compelling. Open Access journal publishing revenues surged from $1.9 billion in 2023 to $2.1 billion in 2024, with projections indicating continued growth to $3.2 billion by 2028[9]. This economic momentum reflects not just market demand but also the strategic priorities of research institutions and funding agencies worldwide that increasingly require open access compliance for grant recipients.
+The financial dimensions of this transformation are equally compelling. Open Access journal publishing revenues surged from $1.9 billion in 2023 to $2.1 billion in 2024, with projections indicating continued growth to $3.2 billion by 2028. This economic momentum reflects not just market demand but also the strategic priorities of research institutions and funding agencies worldwide that increasingly require open access compliance for grant recipients.
 
 The dominance of Gold OA over other access models represents a significant departure from traditional publishing economics. Unlike Green OA, which allows authors to self-archive manuscripts in repositories after embargo periods, Gold OA provides immediate, unrestricted access to the final published version. This model has proven particularly attractive to researchers and institutions seeking maximum visibility and impact for their research investments.
 

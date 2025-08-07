@@ -25,8 +25,21 @@ const MarkdownContent: React.FC<MarkdownContentProps> = ({ contentPath }) => {
           throw new Error(`HTTP error! status: ${response.status} ${response.statusText}`);
         }
         
-        const text = await response.text();
+        let text = await response.text();
         console.log('Content fetched successfully, length:', text.length);
+        
+        // Remove the first H1 (title) from the content to avoid duplicate
+        const lines = text.split('\n');
+        let firstH1Found = false;
+        const filteredLines = lines.filter(line => {
+          if (line.trim().startsWith('# ') && !firstH1Found) {
+            firstH1Found = true;
+            return false; // Skip the first H1
+          }
+          return true;
+        });
+        
+        text = filteredLines.join('\n');
         setContent(text);
         setError(null);
       } catch (err) {

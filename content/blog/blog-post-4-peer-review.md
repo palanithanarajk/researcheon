@@ -24,7 +24,7 @@ Artificial Intelligence is increasingly supplementing human judgment in peer rev
 
 ## Post-Publication Review and Continuous Evaluation
 
-Post-publication peer review (PPPR) represents a paradigm shift from the traditional model's emphasis on pre-publication gatekeeping to continuous evaluation of published work[46]. Platforms like PubPeer enable ongoing commentary and critique of published research, allowing the scientific community to identify errors, suggest improvements, and engage in substantive discussions about research findings.
+Post-publication peer review (PPPR) represents a paradigm shift from the traditional model's emphasis on pre-publication gatekeeping to continuous evaluation of published work. Platforms like PubPeer enable ongoing commentary and critique of published research, allowing the scientific community to identify errors, suggest improvements, and engage in substantive discussions about research findings.
 
 The COVID-19 pandemic accelerated adoption of PPPR models as researchers recognized the need for rapid dissemination coupled with ongoing quality assessment. This approach acknowledges that initial peer review, no matter how rigorous, cannot catch all errors or anticipate all implications of research findings.
 

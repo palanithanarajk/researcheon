@@ -50,7 +50,7 @@ Digital transformation has enabled unprecedented requirements for data sharing a
 
 Organizations like WHO have implemented comprehensive data sharing policies requiring all research they fund or conduct to include data management and sharing plans from project inception. These policies represent a fundamental shift from treating research data as private property to viewing it as a public good that should be maximally accessible while respecting privacy and ethical constraints.
 
-The technological infrastructure supporting data sharing continues to evolve, with specialized repositories, standardized metadata schemas, and automated data validation tools making large-scale data sharing increasingly feasible and reliable[28].
+The technological infrastructure supporting data sharing continues to evolve, with specialized repositories, standardized metadata schemas, and automated data validation tools making large-scale data sharing increasingly feasible and reliable.
 
 ## Conclusion
 
