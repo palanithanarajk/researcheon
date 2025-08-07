@@ -9,21 +9,49 @@ interface MarkdownContentProps {
 
 const MarkdownContent: React.FC<MarkdownContentProps> = ({ contentPath }) => {
   const [content, setContent] = useState<string>('Loading...');
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(contentPath)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to load content');
+    const fetchContent = async () => {
+      try {
+        // Use relative path for deployed environment
+        const url = contentPath.startsWith('/') ? contentPath : `/${contentPath}`;
+        console.log('Attempting to fetch content from:', url);
+        
+        const response = await fetch(url);
+        console.log('Response status:', response.status, response.statusText);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status} ${response.statusText}`);
         }
-        return res.text();
-      })
-      .then((text) => setContent(text))
-      .catch(() => setContent('Failed to load content'));
+        
+        const text = await response.text();
+        console.log('Content fetched successfully, length:', text.length);
+        setContent(text);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching content:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load content');
+        setContent('Failed to load content. Please try again later.');
+      }
+    };
+
+    fetchContent();
   }, [contentPath]);
 
   return (
     <div className="prose prose-lg max-w-none">
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+          <h3 className="text-red-800 font-semibold mb-2">Content Loading Error</h3>
+          <p className="text-red-700 text-sm">
+            {error}
+          </p>
+          <p className="text-red-600 text-xs mt-2">
+            Path: {contentPath}
+          </p>
+        </div>
+      )}
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
