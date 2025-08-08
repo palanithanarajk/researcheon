@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import TrendDetailPage from './components/TrendDetailPage';
 import ArchivePage from './components/ArchivePage';
+import TitleGenerator from './components/TitleGenerator';
 
 const App: React.FC = () => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -11,6 +12,9 @@ const App: React.FC = () => {
     const id = searchParams.get('id');
 
     const renderContent = () => {
+        if (page === 'title-generator') {
+            return <TitleGenerator />;
+        }
         if (page === 'trend' && id) {
             return <TrendDetailPage trendId={id} />;
         }

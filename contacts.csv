@@ -1,6 +1,0 @@
-timestamp,name,email,subject,message
-"2025-08-04T14:50:56.269Z","Test Contact","contact@example.com","Test Subject","This is a test message"
-"2025-08-04T14:54:13.862Z","dstopic1","palanithanaraj.k@vit.ac.in","dd","Palani thanaraj
-"
-"2025-08-04T15:05:18.163Z","Test Contact","contact@example.com","Test Subject","This is a test message"
-"2025-08-04T15:07:49.050Z","Production Test","prod@example.com","Production Test","Testing production API"

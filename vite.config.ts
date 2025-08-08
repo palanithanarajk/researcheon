@@ -11,7 +11,14 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173,
     strictPort: true,
-    open: false
+    open: false,
+    proxy: {
+      '/api': {
+        target: 'https://infer.e2enetworks.net',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
   build: {
     outDir: 'dist',

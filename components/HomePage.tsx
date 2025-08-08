@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Hero from './Hero';
+import FreeToolsSection from './FreeToolsSection';
 import Services from './Services';
 import SubscriptionForm from './SubscriptionForm';
 import About from './About';
@@ -32,6 +33,7 @@ const HomePage: React.FC = () => {
         <>
             <Hero onNavigate={handleNavigateToServices} />
             <Services />
+            <FreeToolsSection />
             <SubscriptionForm />
             <About />
             <Trends />
