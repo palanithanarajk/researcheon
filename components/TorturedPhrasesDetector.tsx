@@ -133,6 +133,9 @@ const TorturedPhrasesDetector: React.FC = () => {
               }}
               config={{ responsive: true }}
             />
+            <p className="mt-4 text-sm text-gray-600">
+              Disclaimer: The tortured phrases are obtained from the Problematic Paper Screener (PPS). Some phrases indeed would be appropriate in certain contexts.
+            </p>
           </div>
         </div>
       )}
