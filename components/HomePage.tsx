@@ -31,13 +31,27 @@ const HomePage: React.FC = () => {
 
     return (
         <>
-            <Hero onNavigate={handleNavigateToServices} />
-            <Services />
-            <FreeToolsSection />
-            <SubscriptionForm />
-            <About />
-            <Trends />
-            <ContactForm />
+            <div className="w-full bg-white">
+                <Hero onNavigate={handleNavigateToServices} />
+            </div>
+            <div className="w-full bg-gray-50">
+                <Services />
+            </div>
+            <div className="w-full bg-white">
+                <FreeToolsSection />
+            </div>
+            <div className="w-full bg-gray-50 flex justify-center">
+                <SubscriptionForm centerAlignment={true} hideTopBorder={true} />
+            </div>
+            <div className="w-full bg-white">
+                <About />
+            </div>
+            <div className="w-full bg-gray-50">
+                <Trends />
+            </div>
+            <div className="w-full bg-white">
+                <ContactForm />
+            </div>
         </>
     );
 };

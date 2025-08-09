@@ -3,9 +3,11 @@ import { handleFormSubmit, FormData } from '../src/utils/formHandlers';
 
 interface SubscriptionFormProps {
     onSubscribe?: (email: string, name: string) => void;
+    centerAlignment?: boolean;
+    hideTopBorder?: boolean;
 }
 
-const SubscriptionForm: React.FC<SubscriptionFormProps> = ({ onSubscribe }) => {
+const SubscriptionForm: React.FC<SubscriptionFormProps> = ({ onSubscribe, centerAlignment = false, hideTopBorder = false }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -62,47 +64,55 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({ onSubscribe }) => {
     };
 
     return (
-        <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-semibold text-brand-dark mb-4">Subscribe to Our Newsletter</h3>
-            <p className="text-gray-600 mb-4">Get the latest research insights and updates delivered to your inbox.</p>
+        <div className={`mt-12 pt-8 pb-8 ${hideTopBorder ? '' : 'border-t border-gray-300'}`}>
+            <h3 className="text-2xl font-bold text-brand-dark mb-6">Subscribe to Our Newsletter</h3>
+            <p className="text-gray-600 mb-6">Get the latest research insights and updates delivered to your inbox.</p>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6 max-w-lg">
                 <div>
+                    <label htmlFor="name" className={`block text-sm font-medium text-gray-700 mb-2 ${centerAlignment ? 'text-center' : ''}`}>
+                        Your Name
+                    </label>
                     <input
+                        id="name"
                         type="text"
-                        placeholder="Your Name"
+                        placeholder="Enter your name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                        className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-colors ${centerAlignment ? 'text-center' : ''}`}
                         disabled={status === 'loading'}
                     />
                 </div>
                 
                 <div>
+                    <label htmlFor="email" className={`block text-sm font-medium text-gray-700 mb-2 ${centerAlignment ? 'text-center' : ''}`}>
+                        Your Email
+                    </label>
                     <input
+                        id="email"
                         type="email"
-                        placeholder="Your Email"
+                        placeholder="Enter your email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent"
+                        className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-colors ${centerAlignment ? 'text-center' : ''}`}
                         disabled={status === 'loading'}
                     />
                 </div>
                 
                 {error && (
-                    <div className="text-red-600 text-sm">{error}</div>
+                    <div className="text-red-600 text-sm bg-red-50 p-3 rounded-lg">{error}</div>
                 )}
                 
                 <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full bg-brand-primary text-white py-2 px-4 rounded-lg hover:bg-brand-secondary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-brand-primary text-white py-3 px-4 rounded-lg hover:bg-brand-secondary transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                 >
-                    {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                    {status === 'loading' ? 'Subscribing...' : 'Subscribe Now'}
                 </button>
                 
                 {status === 'success' && (
-                    <div className="text-green-600 text-sm text-center">
+                    <div className="text-green-600 text-sm text-center bg-green-50 p-3 rounded-lg">
                         Thank you for subscribing! Check your email for confirmation.
                     </div>
                 )}

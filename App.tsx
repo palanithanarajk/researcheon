@@ -31,11 +31,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50 font-sans text-gray-900">
       <Header />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        {renderContent()}
-      </main>
+      <main className="flex-grow">{renderContent()}</main>
       <Footer />
     </div>
   );
