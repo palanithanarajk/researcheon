@@ -11,16 +11,16 @@ const FreeToolsSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <a href="?page=title-generator" target="_blank" rel="noopener noreferrer" className="block bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
             <h3 className="text-xl font-bold mb-2">Title Generator from Abstract</h3>
-            <p className="text-gray-600">Generate a research title from your abstract and keywords. (Limit: 500 words)</p>
+            <p className="text-gray-600">Generate a research title from your abstract and keywords.</p>
           </a>
-          <div className="block bg-white rounded-lg shadow-md p-6 opacity-50 cursor-not-allowed">
-            <h3 className="text-xl font-bold mb-2">DOI Retraction Checker</h3>
-            <p className="text-gray-600">Check if a DOI is retracted using free APIs. (Coming soon)</p>
-          </div>
-          <div className="block bg-white rounded-lg shadow-md p-6 opacity-50 cursor-not-allowed">
+          <a href="?page=doi-retraction-tracker" className="block bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+            <h3 className="text-xl font-bold mb-2">DOI Retraction Tracker</h3>
+            <p className="text-gray-600">Check if a DOI is retracted using free APIs.</p>
+          </a>
+          <a href="?page=tortured-phrases-detector" className="block bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
             <h3 className="text-xl font-bold mb-2">Tortured Phrases Detector</h3>
-            <p className="text-gray-600">Detect tortured phrases in your content. (Coming soon)</p>
-          </div>
+            <p className="text-gray-600">Detect tortured phrases in your content.</p>
+          </a>
         </div>
       </div>
     </section>

@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const { OpenAI } = require('openai');
+const axios = require('axios');
+const cheerio = require('cheerio');
+const puppeteer = require('puppeteer');
 
 const app = express();
 const PORT = 5000;
@@ -20,44 +23,83 @@ const openai = new OpenAI({
 
 app.post('/api/generate', async (req, res) => {
   try {
-    console.log('Received request body:', req.body);
     const { abstract } = req.body;
 
-    if (!abstract || typeof abstract !== 'string' || abstract.trim().length === 0) {
+    if (!abstract || typeof abstract !== 'string') {
       return res.status(400).json({ error: 'Invalid or missing abstract in request body' });
     }
 
-    const prompt = `Generate 4 concise and distinct titles for the following abstract. Return the titles as a numbered list:\n\n${abstract}`;
+    // Updated prompt to generate 5 academic, technical STEM research titles with no plagiarism, in a parsable format
+    const prompt = `Generate 5 unique research paper titles based on the following abstract. The titles should have an academic tone, use technical STEM research terminology appropriately, and avoid any plagiarism. Provide the titles as a JSON array of strings without quotes around the array itself.
 
-    const chatCompletion = await openai.chat.completions.create({
-      temperature: 0.5,
+Abstract: ${abstract}
+
+Titles:`;
+
+    const response = await openai.chat.completions.create({
+      model: 'phi_3_5_moe_instruct',
+      messages: [
+        { role: 'system', content: 'You are a helpful assistant that generates academic research paper titles.' },
+        { role: 'user', content: prompt },
+      ],
       max_tokens: 300,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 1,
-      stream: false,
-      model: "phi_3_5_moe_instruct",
-      messages: [{ role: "user", content: prompt }],
+      temperature: 0.7,
     });
 
-    console.log('OpenAI API response:', chatCompletion);
-
-    if (!chatCompletion.choices || chatCompletion.choices.length === 0) {
+    if (!response.choices || response.choices.length === 0) {
       return res.status(500).json({ error: 'No choices returned from OpenAI API' });
     }
 
-    const textResponse = chatCompletion.choices[0].message.content;
-
-    const titles = textResponse
-      .split(/\n+/)
-      .map(line => line.trim())
-      .filter(line => line.match(/^\d+\.\s*/))
-      .map(line => line.replace(/^\d+\.\s*/, ''));
+    // Parse the titles from the response
+    let titles = [];
+    try {
+      // Try to parse JSON array from the response
+      titles = JSON.parse(response.choices[0].message.content.trim());
+    } catch (parseError) {
+      // Fallback: split by new lines and clean
+      titles = response.choices[0].message.content.trim().split('\n').map(t => t.replace(/^\d+\.\s*/, '').trim()).filter(t => t.length > 0);
+    }
 
     res.json({ titles });
   } catch (error) {
-    console.error('OpenAI API error:', error);
+    console.error('Error generating titles:', error);
     res.status(500).json({ error: error.message || 'Internal Server Error' });
+  }
+});
+
+app.post('/api/check-pubpeer', async (req, res) => {
+  try {
+    let { doi } = req.body;
+    if (!doi || typeof doi !== 'string') {
+      return res.status(400).json({ error: 'Invalid or missing DOI in request body' });
+    }
+
+    // Extract DOI from URL if full URL is provided
+    const doiMatch = doi.match(/10\.\d{4,9}\/[-._;()/:A-Z0-9]+/i);
+    if (doiMatch) {
+      doi = doiMatch[0];
+    } else {
+      return res.status(400).json({ error: 'Invalid DOI format' });
+    }
+
+    // Query Crossref API for DOI metadata
+    const crossrefUrl = `https://api.crossref.org/v1/works/${encodeURIComponent(doi)}`;
+    const response = await axios.get(crossrefUrl);
+    const data = response.data;
+
+    // Check for retraction in updated-by field
+    const updatedBy = data.message['updated-by'];
+    if (updatedBy && Array.isArray(updatedBy)) {
+      const retractionEntry = updatedBy.find(entry => entry.type === 'retraction');
+      if (retractionEntry) {
+        return res.json({ hasComments: true, message: 'This paper has been retracted.' });
+      }
+    }
+
+    return res.json({ hasComments: false, message: 'No retraction found for this DOI.' });
+  } catch (error) {
+    console.error('Error checking Crossref for retraction:', error.message);
+    res.status(500).json({ error: 'Failed to check retraction status' });
   }
 });
 
